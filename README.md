@@ -1,6 +1,4 @@
-********
-Jquery Social Plugin
-********
+# [jQuery Social v.1](http://dinopetrone.github.com/jquery.social)
 
 **Handles the launching of modal windows for social networks**
 
@@ -16,5 +14,3 @@ Jquery Social Plugin
 
     $('.pt').pinterest({description:'Pin goes here'})
 
-1. Pin will automatically grab the og:image property if none is passed in through shareImg.
-2. shareImg must be absolute pathed
