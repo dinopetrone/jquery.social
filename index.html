@@ -27,13 +27,15 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
         <div class="container">
-            <h1>jQuery Social <small>Jquery plugin for handling those annoying social networks you have to add everywhere</small></h1>
-            <hr>
-            <a href='https://raw.github.com/dinopetrone/jquery.social/master/src/jquery.social.js' target='_blank' type="button" class="btn btn-primary">Download</a>
-            <hr>
+            <section>
+                <h1>jQuery Social <small>Jquery plugin for handling those annoying social networks you have to add everywhere</small></h1>
+                <hr>
+                <a href='https://raw.github.com/dinopetrone/jquery.social/master/src/jquery.social.js' target='_blank' type="button" class="btn btn-primary">Download</a>
+                <hr>
+            </section>
             <section>
                 <h2>Facebook</h2>
-                <p>Faceook is pretty basic as the sharing url only accepts one param and then reads page meta for the rest of it's result.  Ensure your meta is setup correctly to get this working well.  View this page source for an example.</p>
+                <p>Faceook is pretty basic. The sharing url only accepts one param and then reads page meta for the rest of it's result.  Ensure your meta is setup correctly to get this working well.  View this page source for an example.</p>
                 <h4>ex:</h4>
                 <div class="row">
                     <div class="col-lg-6">
@@ -43,8 +45,6 @@
                         <button class="fb btn btn-success">Click Me!</button>        
                     </div>
                 </div>
-                
-                
                 <h4>Options + Defaults</h4>
                 <ul>
                     <li>shareurl: location.href</li>
@@ -57,21 +57,19 @@
             <hr>
             <section>
                 <h2>Twitter</h2>
-                <p>Twitter is also fairly basic, you really only NEED to send one param of <strong>message</strong></p>
+                <p>Twitter is also fairly basic, you really don't NEED to send any params because the plugin will automatically use the og:description for the tweet, but it's suggested that you pass at the very least <strong>message</strong></p>
                 <h4>ex:</h4>
                 <div class="row">
                     <div class="col-lg-6">
-                        <pre><code class="js prettyprint">$('.tw').twitter({message:"Tweet goes here it can inclue #hash's as well"})</code></pre>
+                        <pre><code class="js prettyprint">$('.tw').twitter()</code></pre>
                     </div>
                     <div class="col-lg-4">
                         <button class="tw btn btn-success">Click Me!</button>        
                     </div>
                 </div>
-                
-                
                 <h4>Options + Defaults</h4>
                 <ul>
-                    <li>message: 'options.message Tweet Text'</li>
+                    <li>message: $("meta[property='og:description']").attr("content")</li>
                     <li>windowName: 'twitter-share-dialog'</li>
                     <li>width: 626</li>
                     <li>height: 260</li>
@@ -81,11 +79,11 @@
             <hr>
             <section>
                 <h2>Pinterest</h2>
-                <p>Pinterest is a bit more complex because you are basically pinning an image, i wanted to keep it simple so this only requires <strong>description</strong> and will grab the facebook og:image if you don't pass an image as an option </p>
+                <p>Pinterest is a bit more complex because you are basically pinning an image, i wanted to keep it simple so it doesn't require any params as long as you have the right facebook meta on the page. I do suggest you pass <strong>description</strong> and <strong>shareImg</strong> but you don't have to.  The plugin will automatically grab og:image and og:description from the page meta as defaults </p>
                 <h4>ex:</h4>
                 <div class="row">
                     <div class="col-lg-6">
-                        <pre><code class="js prettyprint">$('.pt').pinterest({description:'Pin goes here'})</code></pre>
+                        <pre><code class="js prettyprint">$('.pt').pinterest()</code></pre>
                     </div>
                     <div class="col-lg-4">
                         <button class="pt btn btn-success">Click Me!</button>        
@@ -95,7 +93,7 @@
                 
                 <h4>Options + Defaults</h4>
                 <ul>
-                    <li>description:'options.description Pinterest Description'</li>
+                    <li>description:$("meta[property='og:description']").attr("content")</li>
                     <li>windowName: 'pinterest-share-dialog'</li>
                     <li>width:626</li>
                     <li>height:260</li>
@@ -104,15 +102,24 @@
                     <li>shareImg:$("meta[property='og:image']").attr("content")</li>
                 </ul>
             </section>
+            <hr>
+            <section>
+                <h2>SOCIAL ALL THE THINGS!</h2>
+                <p>If you follow the class naming convention above of .fb .tw .pt you can get lazy and just run this one global command, the plugin will do the rest</p>
+                <h4>ex:</h4>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <pre><code class="js prettyprint">$.social()</code></pre>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <script src="//google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="src/jquery.social.js"></script>
         <script type="text/javascript">
-            $('.fb').facebook()
-            $('.tw').twitter({message:"Tweet goes here it can inclue #hash's as well"})
-            $('.pt').pinterest({description:'Pin goes here'})
+            $.social()
         </script>
     </body>
 </html>
