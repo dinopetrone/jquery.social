@@ -56,6 +56,28 @@
 
             <hr>
             <section>
+                <h2>Google Plus</h2>
+                <p>Google Plus is pretty basic. The sharing url only accepts one param and then reads page meta for the rest of it's result.  Ensure your meta is setup correctly to get this working well.  View this page source for an example.</p>
+                <h4>ex:</h4>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <pre><code class="js prettyprint">$('.gp').gplus()</code></pre>
+                    </div>
+                    <div class="col-lg-4">
+                        <button class="gp btn btn-success">Click Me!</button>        
+                    </div>
+                </div>
+                <h4>Options + Defaults</h4>
+                <ul>
+                    <li>shareurl: location.href</li>
+                    <li>windowName: 'google-share-dialog'</li>
+                    <li>width:626</li>
+                    <li>height:245</li>
+                </ul>
+            </section>
+
+            <hr>
+            <section>
                 <h2>Twitter</h2>
                 <p>Twitter is also fairly basic, you really don't NEED to send any params because the plugin will automatically use the og:description for the tweet, but it's suggested that you pass at the very least <strong>message</strong></p>
                 <h4>ex:</h4>

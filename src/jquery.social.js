@@ -23,6 +23,12 @@
         width:626,
         height:245
     },
+    gpDefaults = {
+        shareurl: location.href,
+        windowName: 'google-share-dialog',
+        width:626,
+        height:245
+    },
     socialMethodArray = {
         twitter:function (element, options){
             var opts = $.extend({}, twDefaults, options)
@@ -38,6 +44,15 @@
             var opts = $.extend({}, fbDefaults, options)
             var socialOptions = {
                 url:'https://www.facebook.com/sharer/sharer.php?u='+
+                    encodeURIComponent(opts.shareurl)
+            }
+            opts = $.extend(opts, socialOptions)
+            new SocialBase(element, opts)
+        },
+        gplus:function (element, options){
+            var opts = $.extend({}, fbDefaults, options)
+            var socialOptions = {
+                url:'https://plus.google.com/share?url='+
                     encodeURIComponent(opts.shareurl)
             }
             opts = $.extend(opts, socialOptions)
@@ -95,6 +110,7 @@
         $('.fb').facebook()
         $('.tw').twitter()
         $('.pt').pinterest()
+        $('.gp').gplus()
     }
 
 })($, document, window);
