@@ -26,7 +26,7 @@
     gpDefaults = {
         shareurl: location.href,
         windowName: 'google-share-dialog',
-        width:626,
+        width:490,
         height:245
     },
     socialMethodArray = {
@@ -50,7 +50,7 @@
             new SocialBase(element, opts)
         },
         gplus:function (element, options){
-            var opts = $.extend({}, fbDefaults, options)
+            var opts = $.extend({}, gpDefaults, options)
             var socialOptions = {
                 url:'https://plus.google.com/share?url='+
                     encodeURIComponent(opts.shareurl)
